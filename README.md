@@ -1,6 +1,6 @@
 # Icon spritesheet with Laravel Mix
 
-SVG icons can be served in multiple ways and one of them is utilising svg fragment identifiers. This sample uses Fragment identifier + CSS 3 combination. This means that there is no need to render SVG spritesheet at the top of the document and then use `<use></use>` tag. The following Sample assumes that spritesheet is kept under the same domain. Otherwise CORS policy will not allow this.
+SVG icons can be served in multiple ways and one of them is utilising svg fragment identifiers. This sample uses fragment identifier + CSS3 combination. This means that there is no need to render SVG spritesheet at the top of the document and then use `<use></use>` tag. The following sample assumes that spritesheet is kept under the same domain. Otherwise CORS policy will not allow this.
 
 **Outcome:**
 
@@ -15,6 +15,7 @@ SVG icons can be served in multiple ways and one of them is utilising svg fragme
 6. Separation of concerns ( SVG spritesheet is kept separate from main page HTML )
 7. Unlikely to crash with caching plugins as icons are not modified ( w3 total caches as an example )
 8. System will render svg even if javascript is disabled ( for systems that currently use JS to modify icons )
+9. Reduces amount or requests ( 2 requests for all mono and coloured icons )
 
 ## Workflow
 1. Gather icons from design
@@ -24,7 +25,7 @@ SVG icons can be served in multiple ways and one of them is utilising svg fragme
 
 
 ## Icons
-There are very little prerequisites for icons. Icons should have a meaningful name as svg file name is used to form class name for the icon. icon names can contain spaces if needed, however Laravel Mix will slugify the file name when spritesheet is created.
+There are very little prerequisites for icons. Icons should have a meaningful name as svg file name is used to form class name for the icon. icon names can contain spaces if needed, however Laravel Mix will slugify the file name when spritesheet is created. Icon names should not be the same between `mono` and `coloured`. Consider adding a postfix in these situations.
 
 For example :
 
@@ -42,7 +43,7 @@ Avoid using numbers as first characters of the svg name. Class Names with number
 
 
 ### Icon folder structure
-This is important as Laravel Mix will distingusih mono icons from coloured.
+This is important as this is how Laravel Mix will distingusih mono icons from coloured.
 Why the separation?
 
 Coloured icons are using `background-image` property to render icon. In contrast mono icons use `webkit-mask` and icon colour is then controlled as desired using `background` or `background-color` property.
@@ -53,11 +54,11 @@ Sample Structure:
 
 
 ### Icon sprites
-There are to icon sprites:
+There are two icon sprites:
 1. `coloured-icon-sprite.svg`
 2. `mono-icon-sprite.svg`
 
-Icon sets are kept seperately, however, this can be combined if neeeded. Technically icons can have the same name when we think of `mono` and `coloured`, this is because each type if icon gets a postfix behind the scenes `-mono` and `-coloured` respectively. Whilst this example assumes same name icon for mono and coloured (facebook), it is advised to keep them separate. (facebook-mono or facebook-coloured as an example). 
+Icon sets are kept seperately.
 
 Sample of mono spritesheet:
 
@@ -99,7 +100,7 @@ Sample of coloured spritesheet:
 
 ## CSS
 
-Laravel mix first creates two mixes for each type of icons, after this - both CSS files are combined into `icons.css` as due to their CSS properties, the y do not crash even with same icon names.
+Laravel mix first creates CSS for each type of icons, after this - both CSS files are combined into `icons.css`.
 
 ```css
 *[class^="svg-"] {
@@ -127,20 +128,19 @@ Laravel mix first creates two mixes for each type of icons, after this - both CS
     background-image: url("/public/build/coloured-icon-sprite.svg#svg-cricket-coloured");
   }
   
-  .svg-facebook {
+  .svg-facebook-coloured {
     background-image: url("/public/build/coloured-icon-sprite.svg#svg-facebook-coloured");
   }
   ```
 
-  Above is an example of a combined `icons.css`. Note that there are lines for the same icon `svg-facebook`. This is because we have facebook icon `coloured` and `mono`. Nothing breaks as styles are applied in a cascading style as one would expect.
+  Above is an example of a combined `icons.css`.
 
 ## Usage
 
 1. Add `icons.css` to the document
    
-   ```html
-       <link rel="stylesheet" href="/public/build/css/icons.css">
-    ```
+`<link rel="stylesheet" href="/public/build/css/icons.css">`
+
 
 2. Reference icon using class name
 
@@ -154,7 +154,7 @@ Laravel mix first creates two mixes for each type of icons, after this - both CS
     <span class="svg-cricket"></span>
     <span class="svg-rugby-ball"></span>
     <span class="svg-tennis"></span>
-    <span class="svg-facebook"></span> 
+    <span class="svg-facebook-coloured"></span> 
 ```
 
 Provided that URL's are correct and that the spritesheet is available - icons will render.
@@ -173,3 +173,9 @@ Used to delete separate CSS spritesheets once they are combined into one.
 
 
 ## DEMO
+1. Create and open directory
+2. ``` git clone git@github.com:ivars-melecis/laravel-mix-spritesheet.git .``` or download zip
+3. `npm i` from root directory
+4. `npm run watch`
+5. `npm run serve` (in a different tab). Needed as simple opening HTML file will not work due to CORS
+6. Open browser as specified in serve tab
