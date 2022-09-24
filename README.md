@@ -2,6 +2,10 @@
 
 SVG icons can be served in multiple ways and one of them is utilising svg fragment identifiers. This sample uses Fragment identifier + CSS 3 combination. This means that there is no need to render SVG spritesheet at the top of the document and then use `<use></use>` tag. The following Sample assumes that spritesheet is kept under the same domain. Otherwise CORS policy will not allow this.
 
+**Outcome:**
+
+![Sample of rendered icons](docs/sample-of-rendered-icons.png "Sample of rendered icons")
+
 ## Benefits
 1. Tidy HTML
 2. Caching benefits
