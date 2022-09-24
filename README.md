@@ -1,10 +1,23 @@
 # Icon spritesheet with Laravel Mix
 
+- [Icon spritesheet with Laravel Mix](#icon-spritesheet-with-laravel-mix)
+  - [Benefits](#benefits)
+  - [Workflow](#workflow)
+  - [Icons](#icons)
+    - [Icon folder structure](#icon-folder-structure)
+    - [Icon sprites](#icon-sprites)
+  - [CSS](#css)
+  - [Usage](#usage)
+  - [Packages](#packages)
+    - [SVG Spritemap Webpack Plugin](#svg-spritemap-webpack-plugin)
+    - [FS extra](#fs-extra)
+  - [DEMO](#demo)
+
 SVG icons can be served in multiple ways and one of them is utilising svg fragment identifiers. This sample uses fragment identifier + CSS3 combination. This means that there is no need to render SVG spritesheet at the top of the document and then use `<use></use>` tag. The following sample assumes that spritesheet is kept under the same domain. Otherwise CORS policy will not allow this.
 
 **Outcome:**
 
-![Sample of rendered icons](docs/sample-of-rendered-icons.png "Sample of rendered icons")
+![Sample of rendered icons](docs/sample-of-rendered-icons-v2.png "Sample of rendered icons")
 
 ## Benefits
 1. Tidy HTML
