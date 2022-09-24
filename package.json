@@ -1,0 +1,23 @@
+{
+  "name": "laravel-mix-icons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "mix watch",
+    "serve": "http-server ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fs-extra": "^10.1.0",
+    "laravel-mix": "^6.0.49",
+    "sass": "^1.55.0",
+    "sass-loader": "^12.6.0",
+    "svg-spritemap-webpack-plugin": "^4.5.0"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

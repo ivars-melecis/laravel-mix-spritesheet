@@ -1,0 +1,31 @@
+body {
+    background: #eee;
+}
+
+.icon-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding:50px 20px;
+}
+
+.icon-demo-mono span {
+    width: 60px;
+    height: 60px;
+    background: #000;
+
+    &:nth-child(odd) {
+        background: teal;
+    }
+
+    &:hover {
+        background: #000;
+    }
+}
+
+.icon-demo-coloured span {
+    width: 100px;
+    height: 100px;
+}
