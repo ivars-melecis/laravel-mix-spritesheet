@@ -26,7 +26,7 @@ SVG icons can be served in multiple ways and one of them is utilising svg fragme
 4. Automated system
 5. Allows colour modifications case by case or on hover ( hardcoding svg would make it more difficult )
 6. Separation of concerns ( SVG spritesheet is kept separate from main page HTML )
-7. Unlikely to crash with caching plugins as icons are not modified ( w3 total caches as an example )
+7. Unlikely to crash with caching plugins as icons are not modified ( w3 total cache as an example )
 8. System will render svg even if javascript is disabled ( for systems that currently use JS to modify icons )
 9. Reduces amount or requests ( 2 requests for all mono and coloured icons )
 
@@ -185,10 +185,10 @@ Is used to create spritesheets as well as CSS stylesheets. Note that templates a
 Used to delete separate CSS spritesheets once they are combined into one.
 
 
-## DEMO
+## Demo
 1. Create and open directory
 2. ``` git clone git@github.com:ivars-melecis/laravel-mix-spritesheet.git .``` or download zip
 3. `npm i` from root directory
 4. `npm run watch`
-5. `npm run serve` (in a different tab). Needed as simple opening HTML file will not work due to CORS
+5. `npm run serve` (in a different tab). Needed as simple opening of HTML file will not work due to CORS
 6. Open browser as specified in serve tab
